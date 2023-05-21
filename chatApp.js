@@ -1,5 +1,6 @@
 const http = require('http');
-  
+
+const fs= require('fs');
 
 const server=http.createServer((req,res)=>{
 
@@ -14,6 +15,16 @@ const server=http.createServer((req,res)=>{
         res.write('</html>')
        return res.end(); // this return is used to return from this anonymous function and prevent running code that is present outside loop
         
+    }
+    //1. redirect the user to nothing (/)
+    //2.create new file and store msg in it.
+
+    if(url === '/message' && method ==="POST"){
+       fs.writeFileSync('message.txt','DUMMY')
+       res.statusCode=302;
+       res.setHeader('Location', '/');
+       return res.end();
+
     }
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>')
