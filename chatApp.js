@@ -20,7 +20,21 @@ const server=http.createServer((req,res)=>{
     //2.create new file and store msg in it.
 
     if(url === '/message' && method ==="POST"){
-       fs.writeFileSync('message.txt','DUMMY')
+        //before writing to file we want get our request data we req.on method
+        //req.on('data', function) data is fired when our new chuck of data is ready to read. & function is used to fired to every data event
+        const body=[];
+        req.on('data', (chunk)=>{
+            body.push(chunk);
+
+        })
+
+        req.on('end', ()=>{
+            const parseBody=Buffer.concat(body).toString();
+            console.log(parseBody);
+            const message=parseBody.split('=')[1]
+            fs.writeFileSync('message.txt',message)
+        })
+       
        res.statusCode=302;
        res.setHeader('Location', '/');
        return res.end();
