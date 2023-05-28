@@ -1,8 +1,20 @@
 const http = require('http');
 
-const routes=require('./route.js');
-console.log(routes.someText);
+const  express= require('express')
 
-const server = http.createServer(routes.handler);
+const app=express()//The express() function is a top-level function exported by the express module.
 
-server.listen(4000);
+app.use((req,res,next)=>{
+    console.log("in the middleware")
+    next();
+})
+
+app.use((req,res,next)=>{
+   // console.log("in the another middleware")
+   res.send('<h1> hello to node js </h1>')
+})
+
+// const server = http.createServer(app);
+
+// server.listen(4000);
+app.listen(4000)
