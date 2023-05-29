@@ -5,8 +5,8 @@
   "main": "asyncPromise.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon chatApp.js",
-    "start-server": "nodemon chatApp.js"
+    "start": "nodemon intoToexpress.js",
+    "start-server": "nodemon intoToexpress.js"
   },
   "author": "Anshul kumar",
   "license": "ISC",
