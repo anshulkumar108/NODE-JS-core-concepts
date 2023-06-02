@@ -32,4 +32,4 @@ app.use('/',(req,res,next)=>{
      res.send('<h1>hello from express js</h1>');
  })
  
-app.listen(4000)
+app.listen(2000)
